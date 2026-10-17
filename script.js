@@ -47,7 +47,7 @@ var PROJECTS = [
 var AUTO_MS = 3500;
 
 
-/* Elemente */
+/* ELEMENTS */
 
 var nav = document.querySelector('nav');
 var neon = document.getElementById('neon');
@@ -69,7 +69,7 @@ var sliderOn = false;
 var autoTimer;
 
 
-/* Limba */
+/* LANG */
 
 function setLang(l) {
   lang = l;
@@ -107,7 +107,7 @@ document.addEventListener('click', function () {
 setLang(lang);
 
 
-/* Codul din console (decorativ, doar fragmente) */
+/* CONSOLE CODE */
 
 var HTML_TEXT = [
   '<!DOCTYPE html>',
@@ -214,7 +214,7 @@ var JS_TEXT = [
 ].join('\n');
 
 
-/* Colorarea codului */
+/* CODE COLOUR */
 
 function esc(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -268,7 +268,7 @@ function hlJs(s) {
 }
 
 
-/* Consolele */
+
 
 var consoles = [
   { box: document.getElementById('consoleHtml'), code: document.getElementById('codeHtml'), text: HTML_TEXT, hl: hlHtml },
@@ -310,7 +310,7 @@ function typeCode(c) {
 }
 
 
-/* Logo neon */
+/* LOGO */
 
 'DCM'.split('').forEach(function (ch) {
   var s = document.createElement('span');
@@ -324,7 +324,7 @@ function typeCode(c) {
 });
 
 
-/* Slider proiecte */
+/* PROJECT SLIDER */
 
 PROJECTS.forEach(function (p) {
   var a = document.createElement('a');
@@ -390,7 +390,7 @@ window.addEventListener('resize', function () {
 });
 
 
-/* Intro */
+/* INTRO */
 
 function sleep(ms) {
   return new Promise(function (resolve) {
@@ -423,7 +423,7 @@ async function intro() {
   setTimeout(function () { neon.classList.add('lit'); }, 900);
   setTimeout(showSlider, 1400);
 
-  // Welcome si About Me se scriu in paralel
+
   await Promise.all([
     typeInto(output, t.welcome, 55),
     (async function () {
@@ -434,7 +434,6 @@ async function intro() {
 
   resume.classList.add('show');
 
-  // Textele devin normale, deci selectorul de limba le poate schimba
   aboutTitle.removeAttribute('data-typing');
   aboutText.removeAttribute('data-typing');
   output.removeAttribute('data-typing');
