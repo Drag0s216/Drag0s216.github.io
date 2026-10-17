@@ -251,9 +251,8 @@ main {
   align-items: center;
 }
 
-.about,
-.contact {
-  min-height: 230px;
+.about {
+  min-height: 335px;
 }
 
 .about {
