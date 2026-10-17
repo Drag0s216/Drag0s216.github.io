@@ -16,7 +16,8 @@ var T = {
     resume: 'CV-UL MEU',
     contact: 'Contact',
     projectsTitle: 'Proiectele mele',
-    footer: '© ' + new Date().getFullYear() + ' Dragos Mihaescu. Toate drepturile rezervate.'
+    footer: '© ' + new Date().getFullYear() + ' Dragos-Constantin Mihaescu. Toate drepturile rezervate.',
+    more: 'Mai multe proiecte în curând pe'
   },
   en: {
     welcome: 'Welcome to my Personal Website',
@@ -25,7 +26,8 @@ var T = {
     resume: 'MY RESUME',
     contact: 'Contact',
     projectsTitle: 'My Projects',
-    footer: '© ' + new Date().getFullYear() + ' Dragos Mihaescu. All rights reserved.'
+    more: 'More coming soon on',
+    footer: '© ' + new Date().getFullYear() + ' Dragos-Constantin Mihaescu. All rights reserved.'
   }
 };
 
