@@ -12,7 +12,7 @@ var T = {
   ro: {
     welcome: 'Bine ai venit pe site-ul meu personal',
     title: 'Despre mine',
-    text: 'Salut, sunt Dragoș. Student în anul al treilea la Robotică, cu experiență practică în sisteme interconectate, infrastructură găzduită în regim propriu și programare aplicată.',
+    text: 'Salut, sunt Dragoș. Student în anul al treilea la Robotică, cu experiență practică în sisteme în rețea, infrastructură self-hosted și programare aplicată.',
     resume: 'CV-UL MEU',
     contact: 'Contact',
     projectsTitle: 'Proiectele mele',
