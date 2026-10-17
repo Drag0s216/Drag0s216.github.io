@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DCM's Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <nav>
+    <div class="neon" id="neon" role="img" aria-label="DCM"></div>
+
+    <div class="lang">
+      <button class="btn" id="langBtn" aria-haspopup="true"></button>
+      <div class="menu" id="langMenu">
+        <button data-lang="ro"></button>
+        <button data-lang="en"></button>
+      </div>
+    </div>
+  </nav>
+
+  <h2 class="output" id="output" data-i18n="welcome" data-typing></h2>
+
+  <main>
+    <section class="about">
+      <h1 id="aboutTitle" data-i18n="title" data-typing></h1>
+      <p id="aboutText" data-i18n="text" data-typing></p>
+      <a class="resume" id="resume" href="resume.pdf" target="_blank" data-i18n="resume">MY RESUME</a>
+    </section>
+
+    <section class="contact">
+      <h2 data-i18n="contact">Contact</h2>
+
+      <div class="contact-grid">
+        <a class="contact-btn" href="https://instagram.com/dragos.mihaescu" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram"></i><span>Instagram</span>
+        </a>
+        <a class="contact-btn" href="https://github.com/Drag0s216?tab=repositories" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i><span>GitHub</span>
+        </a>
+        <a class="contact-btn" href="https://www.linkedin.com/in/dragos-constantin-mihaescu-6a7656405/" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin"></i><span>LinkedIn</span>
+        </a>
+        <a class="contact-btn" href="mailto:dragos.mihaescu@proton.me">
+          <i class="fa-solid fa-envelope"></i><span>Email</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <section class="projects">
+    <h2 data-i18n="projectsTitle">My Projects</h2>
+
+    <div class="slider" id="slider">
+      <button class="arrow" id="prevBtn" aria-label="Previous">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+
+      <div class="viewport">
+        <div class="track" id="track"></div>
+      </div>
+
+      <button class="arrow" id="nextBtn" aria-label="Next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <footer class="footer" data-i18n="footer">© 2026 Dragos Mihaescu. All rights reserved.</footer>
+
+  <div class="console top" id="consoleHtml">
+    <div class="bar"><i></i><i></i><i></i><span class="title">index.html</span></div>
+    <div class="code" id="codeHtml"></div>
+  </div>
+
+  <div class="console left" id="consoleCss">
+    <div class="bar"><i></i><i></i><i></i><span class="title">style.css</span></div>
+    <div class="code" id="codeCss"></div>
+  </div>
+
+  <div class="console right" id="consoleJs">
+    <div class="bar"><i></i><i></i><i></i><span class="title">script.js</span></div>
+    <div class="code" id="codeJs"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

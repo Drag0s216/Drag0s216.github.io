@@ -1,0 +1,588 @@
+/* General */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: linear-gradient(90deg, #0F0721 0%, #240057 50%, #30016E 100%);
+  color: #e6e8ec;
+}
+
+/* Strat negru peste fundal, sub console (z-index 50), dispare dupa intro */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: #000000;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+}
+
+body.revealed::before {
+  opacity: 0;
+}
+
+
+/* Sticla: butoane si containere */
+
+.btn,
+.arrow,
+.resume,
+.about,
+.contact,
+.projects {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn,
+.arrow,
+.resume {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.about,
+.contact,
+.projects {
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover,
+.arrow:hover,
+.resume:hover {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.about h1,
+.contact h2,
+.projects h2 {
+  margin: 0 0 20px;
+  font-size: 40px;
+  color: white;
+}
+
+
+/* Navbar */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  transform: translateY(-150%);
+  opacity: 0;
+  transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s;
+}
+
+nav.in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.neon {
+  display: flex;
+  font-size: 45px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  user-select: none;
+}
+
+.neon .letter {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #3a2a6a;
+}
+
+.neon.lit .letter {
+  animation-name: neonOn;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes neonOn {
+  0%, 14%, 23%, 40%, 51%, 68% {
+    color: transparent;
+    -webkit-text-stroke-color: #3a2a6a;
+    text-shadow: none;
+  }
+  15%, 22%, 41%, 50%, 69%, 100% {
+    color: rgba(0, 187, 255, 0.15);
+    -webkit-text-stroke-color: #7fdcff;
+    text-shadow: 0 0 4px #00BBFF, 0 0 10px #00BBFF, 0 0 22px #00BBFF, 0 0 40px #0077ff;
+  }
+}
+
+
+/* Selectorul de limba */
+
+.lang {
+  position: relative;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  color: #ffffff;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn.active {
+  background: rgba(99, 102, 241, 0.45);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 44px;
+  min-width: 150px;
+  padding: 4px;
+  border-radius: 10px;
+  background: rgba(20, 10, 45, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.menu.open {
+  display: block;
+}
+
+.menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background: rgba(127, 127, 127, 0.18);
+}
+
+.flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+
+/* Welcome, About Me, Contact */
+
+.output {
+  margin: 0;
+  padding: 10px 24px 0;
+  min-height: 72px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #00BBFF;
+}
+
+.output .cur,
+.about .cur {
+  width: 3px;
+  height: 1em;
+  background: currentColor;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  align-items: center;
+}
+
+.about,
+.contact {
+  min-height: 230px;
+}
+
+.about {
+  transform: translateX(-120vw);
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.contact {
+  transform: translateX(120vw);
+  transition: transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.about.in,
+.contact.in {
+  transform: translateX(0);
+}
+
+.about p {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 25px;
+  color: #EDEDED;
+}
+
+.resume {
+  display: block;
+  width: fit-content;
+  margin: 28px auto 0;
+  padding: 12px 30px;
+  border-radius: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s, transform 0.6s, background 0.2s;
+}
+
+.resume.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.contact-btn i {
+  width: 30px;
+  text-align: center;
+  font-size: 26px;
+}
+
+.contact-btn:hover {
+  background: rgba(99, 102, 241, 0.35);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+
+/* Proiecte */
+
+.projects {
+  width: min(1152px, calc(100% - 48px));
+  margin: 0 auto 40px;
+  transform: translateY(120vw);
+  transition: transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.projects.in {
+  transform: translateY(0);
+}
+
+.projects h2 {
+  text-align: center;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.viewport {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 0;
+  overflow: hidden;
+}
+
+.track {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project {
+  flex: 0 0 calc((100% - 40px) / 3);
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  background: rgba(99, 102, 241, 0.25);
+}
+
+.project img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.project-name {
+  padding: 14px 16px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.arrow {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.footer {
+  padding: 20px 24px 28px;
+  text-align: center;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* Console */
+
+.console {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #333333;
+  border-radius: 14px;
+  background: #120040;
+  color: #d4d4d4;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: clip-path 0.5s ease;
+}
+
+.console.top {
+  top: 120px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: min(760px, 92vw);
+  height: 38vh;
+  min-height: 220px;
+  clip-path: inset(0 0 100% 0);
+}
+
+.console.left,
+.console.right {
+  bottom: 3vh;
+  width: 44vw;
+  height: 36vh;
+  min-height: 200px;
+  clip-path: inset(100% 0 0 0);
+}
+
+.console.left {
+  left: 3vw;
+}
+
+.console.right {
+  right: 3vw;
+}
+
+/* Trebuie sa ramana dupa regulile de mai sus */
+.console.open {
+  clip-path: inset(0 0 0 0);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  padding: 10px 16px;
+  background: #5000A1;
+  border-bottom: 1px solid #333333;
+}
+
+.bar i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.bar i:nth-child(1) { background: #ff5f56; }
+.bar i:nth-child(2) { background: #ffbd2e; }
+.bar i:nth-child(3) { background: #27c93f; }
+
+.bar .title {
+  margin-left: 12px;
+  font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+  font-size: 12px;
+  color: white;
+}
+
+.code {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 12px 8px;
+  overflow: hidden;
+  font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+.ln {
+  display: flex;
+}
+
+.num {
+  flex: none;
+  width: 36px;
+  padding-right: 16px;
+  text-align: right;
+  color: #858585;
+  user-select: none;
+}
+
+.cur {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: #aeafad;
+  vertical-align: text-bottom;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.k { color: #569cd6; }
+.s { color: #ce9178; }
+.f { color: #dcdcaa; }
+.n { color: #b5cea8; }
+.c { color: #6a9955; font-style: italic; }
+.b { color: #ffd700; }
+.v { color: #9cdcfe; }
+
+
+/* Telefon / ecran mic */
+
+@media (max-width: 820px) {
+  nav {
+    padding: 10px 14px;
+  }
+
+  .neon {
+    font-size: 24px;
+  }
+
+  .output {
+    min-height: 50px;
+    font-size: 32px;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .about h1,
+  .contact h2,
+  .projects h2 {
+    font-size: 32px;
+  }
+
+  .about p {
+    font-size: 19px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects {
+    width: calc(100% - 28px);
+    padding: 18px;
+  }
+
+  .project {
+    flex-basis: 100%;
+  }
+
+  .arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .console.top {
+    height: 30vh;
+  }
+
+  .console.left,
+  .console.right {
+    width: 46vw;
+    height: 34vh;
+  }
+
+  .code {
+    font-size: 11px;
+  }
+}
